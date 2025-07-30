@@ -1,10 +1,10 @@
-# AndroidCustomizer Svelte App
+# Droidify SvelteKit App
 
-This is a Svelte implementation of the AndroidCustomizer website, a platform for Android device customization resources.
+This is a SvelteKit implementation of the Droidify website, a platform for Android device customization resources.
 
 ## Description
 
-AndroidCustomizer is a one-stop solution for Android customization. The platform provides all the resources, tools, and guides users need for any Android device - ready to use in minutes, not days.
+Droidify is a one-stop solution for Android customization. The platform provides all the resources, tools, and guides users need for any Android device - ready to use in minutes, not days.
 
 ## Features
 
@@ -17,21 +17,21 @@ AndroidCustomizer is a one-stop solution for Android customization. The platform
 
 ## Netlify Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/955f13f5-90a3-4b8e-8d43-e47b1ed1e3d6/deploy-status)](https://app.netlify.com/projects/droidify/deploys)
+
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version 14 or higher recommended)
+- Node.js
 - npm or yarn package manager
 
 ### Installation
 
 1. Clone this repository
    ```bash
-   git clone https://github.com/eliekh05/android-customizer.git
-   cd android-customizer
+   git clone https://github.com/eliekh05/Droidify.git
+   cd Droidify
    ```
 
 2. Install dependencies
@@ -57,17 +57,14 @@ AndroidCustomizer is a one-stop solution for Android customization. The platform
 
 ## Technologies Used
 
-- [Svelte](https://svelte.dev/) - Frontend framework
-- [Rollup](https://rollupjs.org/) - Module bundler
-- [FontAwesome](https://fontawesome.com/) - Icon library
-- [Google Fonts](https://fonts.google.com/) - Web fonts
+- [SvelteKit](https://svelte.dev/docs/kit) - Frontend framework
 
-## Converting from HTML to Svelte
+## Converting from HTML to SvelteKit
 
-This project is a conversion of a static HTML website to a component-based Svelte application. The conversion process involved:
+This project is a conversion of a static HTML website to a component-based SvelteKit application. The conversion process involved:
 
 1. Breaking down the HTML into reusable components
-2. Converting inline JavaScript to Svelte reactive declarations and event handlers
+2. Converting inline JavaScript to SvelteKit reactive declarations and event handlers
 3. Scoping CSS styles to their respective components
 4. Implementing data flow between components
 
