@@ -7,7 +7,7 @@
 
     <nav role="navigation" aria-label="Primary Navigation">
       <ul>
-        <li><a href="https://anroot.netlify.app/Home">Home</a></li>
+        <li><a href="https://anroot.netlify.app/">Home</a></li>
         <li><a href="https://anroot.netlify.app/Features">Features</a></li>
         <li><a href="https://anroot.netlify.app/Devices">Devices</a></li>
         <li><a href="https://anroot.netlify.app/Guides">Guides</a></li>
