@@ -3,31 +3,31 @@
     {
       title: "Resources",
       links: [
-        { text: "Custom Rom", url: "https://droidify.netlify.app/Custom_Rom" },
-        { text: "Recovery Images", url: "https://droidify.netlify.app/Recovery_Images" },
-        { text: "Kernels", url: "https://droidify.netlify.app/Kernels" },
-        { text: "Root Tools", url: "https://droidify.netlify.app/Root_Tools" },
-        { text: "Mods & Tweaks", url: "https://droidify.netlify.app/Mods_and_Tweaks" }
+        { text: "Custom Rom", url: "https://anroot.netlify.app/Custom_Rom" },
+        { text: "Recovery Images", url: "https://anroot.netlify.app/Recovery_Images" },
+        { text: "Kernels", url: "https://anroot.netlify.app/Kernels" },
+        { text: "Root Tools", url: "https://anroot.netlify.app/Root_Tools" },
+        { text: "Mods & Tweaks", url: "https://anroot.netlify.app/Mods_and_Tweaks" }
       ],
     },
     {
       title: "Guides",
       links: [
-        { text: "Rooting Guide", url: "https://droidify.netlify.app/Rooting_Guide" },
-        { text: "Custom ROM Installation", url: "https://droidify.netlify.app/Custom_ROM_Installation" },
-        { text: "Backup & Restore", url: "https://droidify.netlify.app/Backup_and_Restore" },
-        { text: "Troubleshooting", url: "https://droidify.netlify.app/Troubleshooting" },
-        { text: "FAQ", url: "https://droidify.netlify.app/FAQ" }
+        { text: "Rooting Guide", url: "https://anroot.netlify.app/Rooting_Guide" },
+        { text: "Custom ROM Installation", url: "https://anroot.netlify.app/Custom_ROM_Installation" },
+        { text: "Backup & Restore", url: "https://anroot.netlify.app/Backup_and_Restore" },
+        { text: "Troubleshooting", url: "https://anroot.netlify.app/Troubleshooting" },
+        { text: "FAQ", url: "https://anroot.netlify.app/FAQ" }
       ],
     },
     {
       title: "Company",
       links: [
-        { text: "About Us", url: "https://droidify.netlify.app/About_Us" },
-        { text: "Our Team", url: "https://droidify.netlify.app/Our_Team" },
-        { text: "Privacy Policy", url: "https://droidify.netlify.app/Privacy_Policy" },
-        { text: "Terms of Service", url: "https://droidify.netlify.app/Terms_of_Service" },
-        { text: "Contact Us", url: "https://droidify.netlify.app/Contact_Us" }
+        { text: "About Us", url: "https://anroot.netlify.app/About_Us" },
+        { text: "Our Team", url: "https://anroot.netlify.app/Our_Team" },
+        { text: "Privacy Policy", url: "https://anroot.netlify.app/Privacy_Policy" },
+        { text: "Terms of Service", url: "https://anroot.netlify.app/Terms_of_Service" },
+        { text: "Contact Us", url: "https://anroot.netlify.app/Contact_Us" }
       ],
     },
   ];
