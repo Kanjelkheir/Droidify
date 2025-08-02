@@ -7,12 +7,12 @@
 
     <nav role="navigation" aria-label="Primary Navigation">
       <ul>
-        <li><a href="https://droididfy.netlify.app/Home">Home</a></li>
-        <li><a href="https://droididfy.netlify.app/Features">Features</a></li>
-        <li><a href="https://droididfy.netlify.app/Devices">Devices</a></li>
-        <li><a href="https://droididfy.netlify.app/Guides">Guides</a></li>
-        <li><a href="https://droididfy.netlify.app/Community">Community</a></li>
-        <li><a href="https://droididfy.netlify.app/Contact">Contact</a></li>
+        <li><a href="https://anroot.netlify.app/Home">Home</a></li>
+        <li><a href="https://anroot.netlify.app/Features">Features</a></li>
+        <li><a href="https://anroot.netlify.app/Devices">Devices</a></li>
+        <li><a href="https://anroot.netlify.app/Guides">Guides</a></li>
+        <li><a href="https://anroot.netlify.app/Community">Community</a></li>
+        <li><a href="https://anroot.netlify.app/Contact">Contact</a></li>
       </ul>
     </nav>
   </div>
