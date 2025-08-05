@@ -16,4 +16,4 @@ export type Pathname = "/";
 
 export type ResolvedPathname = `${"" | `/${string}`}${Pathname}`;
 
-export type Asset = "/.DS_Store" | "/favicon.svg";
+export type Asset = "/favicon.ico";
