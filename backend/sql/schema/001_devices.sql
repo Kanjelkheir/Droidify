@@ -9,3 +9,6 @@ create table devices (
     custom_firmeware text,
     shrp_recovery text unique
 );
+
+-- +goose Down
+drop table devices;
