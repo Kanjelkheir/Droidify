@@ -26,7 +26,7 @@ func (cfg *apiConfig) getData() http.Handler {
 			Model string `json:"model"`
 		}
 
-		data, err := agent.GetData(r)
+		data, err := agent.GetData(r, cfg.db)
 		if err != nil {
 			fmt.Printf("Error communicating to ai model:\n %v", err)
 		}
@@ -42,6 +42,7 @@ func (cfg *apiConfig) getData() http.Handler {
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(jsonResponse)
 	})
+
 }
 
 func (cfg *apiConfig) hitsMiddleware(handler http.Handler) http.Handler {
@@ -77,6 +78,8 @@ func main() {
 
 	db_url := os.Getenv("DB_URL")
 
+	port := os.Getenv("PORT")
+
 	db, err := sql.Open("postgres", db_url)
 	if err != nil {
 		fmt.Println("Failed to open db:", err)
@@ -87,7 +90,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	server := http.Server{
-		Addr:    ":8080",
+		Addr:    fmt.Sprintf(":%s", port),
 		Handler: mux,
 	}
 
@@ -98,7 +101,7 @@ func main() {
 	mux.Handle("POST /api/root", config.hitsMiddleware(config.getData()))
 	mux.Handle("GET /api/admin/hits", config.getMetrics())
 
-	log.Println("Started listening on port 8080")
+	log.Println("Started listening on port", port)
 	err = server.ListenAndServe()
 	if err != nil {
 		log.Fatal("Failed to start server")
