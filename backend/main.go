@@ -72,6 +72,20 @@ func (cfg *apiConfig) getMetrics() http.Handler {
 	})
 }
 
+func corsMiddleware(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*") // Or specify your frontend origin, e.g., "http://localhost:5173"
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+		handler.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 
 	godotenv.Load()
@@ -91,7 +105,7 @@ func main() {
 	mux := http.NewServeMux()
 	server := http.Server{
 		Addr:    fmt.Sprintf(":%s", port),
-		Handler: mux,
+		Handler: corsMiddleware(mux), // Apply CORS middleware to the main mux
 	}
 
 	config := apiConfig{

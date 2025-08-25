@@ -13,6 +13,7 @@ import (
 	"github.com/kanjelkheir/droidify/internal/database"
 )
 
+// Data struct for the device information
 type Data struct {
 	Model               string `json:"model"`
 	Twrp                string `json:"twrp"`
@@ -23,6 +24,7 @@ type Data struct {
 	Shrp_recovery       string `json:"shrp_recovery"`
 }
 
+// RequestData struct for the incoming HTTP request body
 type RequestData struct {
 	Model string `json:"model"`
 }
@@ -41,9 +43,10 @@ var newConfigFunc func(message, apiKey, endpoint string) Configurator = func(mes
 	}
 }
 
+// GetData handles retrieving device information, either from DB or Gemini API
 func GetData(r *http.Request, db *database.Queries) (Data, error) {
 	api_key := os.Getenv("GEMINI_API_KEY")
-	endpoint := "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
+	endpoint := "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 	var reqData RequestData
 	var resultData Data
 
@@ -52,20 +55,23 @@ func GetData(r *http.Request, db *database.Queries) (Data, error) {
 		return Data{}, errors.New("Invalid request body")
 	}
 
-	// check if device already exist in the data base (add caching)
-
-	deviceData, err := db.GetDevice(context.Background(), reqData.Model)
+	// Check if it already exists on the db
+	data, err := db.GetDevice(context.Background(), reqData.Model)
 	if err == nil {
-		resultData.Model = deviceData.Model
-		resultData.Custom_firmware = deviceData.CustomFirmeware.String
-		resultData.Odin = deviceData.Odin.String
-		resultData.Twrp = deviceData.Twrp.String
-		resultData.Stock_firmware = deviceData.StockFirmware.String
-		resultData.Orange_fox_recovery = deviceData.OrangeFoxRecovery.String
-
+		// If found in DB, return existing data
+		resultData = Data{
+			Model:               data.Model,
+			Twrp:                data.Twrp.String,
+			Stock_firmware:      data.StockFirmware.String,
+			Odin:                data.Odin.String,
+			Orange_fox_recovery: data.OrangeFoxRecovery.String,
+			Custom_firmware:     data.CustomFirmeware.String,
+			Shrp_recovery:       data.ShrpRecovery.String,
+		}
 		return resultData, nil
 	}
 
+	// If not in DB, generate prompt for Gemini API
 	prompt := fmt.Sprintf(`I want you to generate similar results for the following device-model: %v.
 		Provide the output in JSON format following this structure:
 		{
@@ -98,22 +104,35 @@ func GetData(r *http.Request, db *database.Queries) (Data, error) {
 		return Data{}, err
 	}
 
+	// TODO: Save resultData to database here if needed.
+	// For example:
+	// _, err = db.CreateDevice(context.Background(), database.CreateDeviceParams{
+	// 	Model: reqData.Model,
+	// 	Twrp: sql.NullString{String: resultData.Twrp, Valid: resultData.Twrp != ""},
+	// 	// ... populate other fields
+	// })
+	// if err != nil {
+	// 	fmt.Printf("Error saving data to DB: %v\n", err)
+	// }
+
 	return resultData, nil
 
 }
 
+// Config struct holds configuration for Gemini API requests
 type Config struct {
 	message  string
 	api_key  string
 	endpoint string
 }
 
+// GetResponse sends a POST request to the Gemini API and returns the generated text.
 func (c *Config) GetResponse() (string, error) {
 	if c.message == "" {
 		return "", errors.New("Invalid Message")
 	}
 
-	url := c.endpoint + c.api_key
+	url := c.endpoint
 
 	requestBody := map[string]any{
 		"contents": []map[string]any{
@@ -130,42 +149,50 @@ func (c *Config) GetResponse() (string, error) {
 		},
 	}
 
-	// make json string from request body
+	// Marshal the request body to JSON
 	jsonData, err := json.Marshal(requestBody)
-
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to marshal request body: %w", err)
 	}
 
-	// get buffer from json
+	// Create a new HTTP request
 	buffer := bytes.NewBuffer(jsonData)
-	req, err := http.NewRequest("post", url, buffer)
+	req, err := http.NewRequest("POST", url, buffer)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to create new request: %w", err)
 	}
 
-	// set the data sent to be json data (change the headers)
+	// Set required headers
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("X-goog-api-key", c.api_key) // Add the API key to the header
 
-	// initialize a new client and send the request
+	// Initialize a new HTTP client and send the request
 	client := &http.Client{}
 	res, err := client.Do(req)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to send request to Gemini API: %w", err)
 	}
-
 	defer res.Body.Close()
+
+	if res.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("Gemini API returned non-200 status code: %d", res.StatusCode)
+	}
 
 	var data GeminiResponse
 	decoder := json.NewDecoder(res.Body)
 	if err := decoder.Decode(&data); err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to decode Gemini API response: %w", err)
+	}
+
+	if len(data.Candidates) == 0 || len(data.Candidates[0].Content.Parts) == 0 {
+		return "", errors.New("no content found in Gemini response")
 	}
 
 	result := data.Candidates[0].Content.Parts[0].Text
 	return result, nil
 }
 
+// GeminiResponse structs for unmarshalling the API response
 type GeminiResponse struct {
 	Candidates []Candidate `json:"candidates"`
 }
