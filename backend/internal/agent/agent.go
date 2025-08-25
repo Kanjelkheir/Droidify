@@ -2,12 +2,15 @@ package agent
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/kanjelkheir/droidify/internal/database"
 )
 
 type Data struct {
@@ -38,7 +41,7 @@ var newConfigFunc func(message, apiKey, endpoint string) Configurator = func(mes
 	}
 }
 
-func GetData(r *http.Request) (Data, error) {
+func GetData(r *http.Request, db *database.Queries) (Data, error) {
 	api_key := os.Getenv("GEMINI_API_KEY")
 	endpoint := "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
 	var reqData RequestData
@@ -48,6 +51,21 @@ func GetData(r *http.Request) (Data, error) {
 	if err := decoder.Decode(&reqData); err != nil {
 		return Data{}, errors.New("Invalid request body")
 	}
+
+	// check if device already exist in the data base (add caching)
+
+	deviceData, err := db.GetDevice(context.Background(), reqData.Model)
+	if err == nil {
+		resultData.Model = deviceData.Model
+		resultData.Custom_firmware = deviceData.CustomFirmeware.String
+		resultData.Odin = deviceData.Odin.String
+		resultData.Twrp = deviceData.Twrp.String
+		resultData.Stock_firmware = deviceData.StockFirmware.String
+		resultData.Orange_fox_recovery = deviceData.OrangeFoxRecovery.String
+
+		return resultData, nil
+	}
+
 	prompt := fmt.Sprintf(`I want you to generate similar results for the following device-model: %v.
 		Provide the output in JSON format following this structure:
 		{
