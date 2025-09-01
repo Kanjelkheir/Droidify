@@ -17,14 +17,14 @@ react: ^19.1.1
 react-dom: ^19.1.1
 ```
 🚀 Run Commands
-
-dev: ```npm run dev```
-build: ```npm run build```
-lint: ```npm run lint```
-preview: ```npm run preview```
-Run: ```go run .```
-Build: ```go build```
-
+```
+dev: npm run dev
+build: npm run build
+lint: npm run lint
+preview: npm run preview
+Run: go run .
+Build: go build
+```
 📁 Project Structure
 ```
 .
