@@ -24,7 +24,7 @@ preview: npm run preview
 Run: go run .
 Build: go build
 📁 Project Structure
-
+```
 .
 ├── backend
 │   ├── Dockerfile
@@ -83,6 +83,7 @@ Build: go build
 │   └── favicon.ico
 ├── vite.config.js
 └── vite.config.ts
+```
 🛠️ Development Setup
 
 Node.js/JavaScript Setup
