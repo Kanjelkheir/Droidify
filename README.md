@@ -87,9 +87,8 @@ Build: go build
 └── vite.config.ts
 ```
 🛠️ Development Setup
-
-Node.js/JavaScript Setup
 ```
+Node.js/JavaScript Setup
 Install Node.js (v18+ recommended)
 Install dependencies: npm install or yarn install
 Start development server: (Check scripts in package.json, e.g., npm run dev)
