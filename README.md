@@ -1,10 +1,10 @@
-# droidify
+# Droidify
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
 
 ## 📝 Description
 
-Unleash the full potential of your Android device with Droidify, the ultimate customization hub! Say goodbye to endless searching and complicated procedures. Droidify provides a seamless experience for finding custom ROMs, recovery images, and essential tools, all tailored to your specific device. Dive into our extensive database, explore device-specific guides, and enjoy direct downloads – transforming your Android experience from daunting to delightful. Powered by React for a smooth and responsive interface, Droidify puts the power of Android customization at your fingertips. Get ready to personalize your phone in minutes, not days!
+Droidify is your one-stop platform for unleashing the full potential of your Android device! Tired of the limitations imposed by your stock ROM? Dive into a world of custom ROMs, recovery images, and essential tools, all meticulously organized and readily available for countless devices. We've streamlined the often-complex process of Android customization, providing device-specific guides and direct downloads to empower you to transform your Android experience in minutes, not days. Droidify's user-friendly React-based interface ensures a seamless and intuitive experience as you explore a vast database of resources to breathe new life into your device.
 
 ## ✨ Features
 
@@ -37,141 +37,6 @@ react-dom: ^19.1.1
 
 ```
 .
-├── .netlify
-│   ├── edge.js
-│   ├── functions-internal
-│   │   ├── sveltekit-render.json
-│   │   └── sveltekit-render.mjs
-│   ├── server
-│   │   ├── .vite
-│   │   │   └── manifest.json
-│   │   ├── _app
-│   │   │   └── immutable
-│   │   │       └── assets
-│   │   │           └── _layout.CR1R5xe_.css
-│   │   ├── chunks
-│   │   │   ├── exports.js
-│   │   │   ├── index.js
-│   │   │   └── internal.js
-│   │   ├── entries
-│   │   │   ├── fallbacks
-│   │   │   │   └── error.svelte.js
-│   │   │   └── pages
-│   │   │       ├── _layout.svelte.js
-│   │   │       └── _page.svelte.js
-│   │   ├── index.js
-│   │   ├── internal.js
-│   │   ├── manifest-full.js
-│   │   ├── manifest.js
-│   │   └── nodes
-│   │       ├── 0.js
-│   │       ├── 1.js
-│   │       └── 2.js
-│   ├── serverless.js
-│   └── shims.js
-├── .svelte-kit
-│   ├── ambient.d.ts
-│   ├── generated
-│   │   ├── client
-│   │   │   ├── app.js
-│   │   │   ├── matchers.js
-│   │   │   └── nodes
-│   │   │       ├── 0.js
-│   │   │       ├── 1.js
-│   │   │       └── 2.js
-│   │   ├── client-optimized
-│   │   │   ├── app.js
-│   │   │   ├── matchers.js
-│   │   │   └── nodes
-│   │   │       ├── 0.js
-│   │   │       ├── 1.js
-│   │   │       └── 2.js
-│   │   ├── root.js
-│   │   ├── root.svelte
-│   │   └── server
-│   │       └── internal.js
-│   ├── netlify
-│   │   ├── _app
-│   │   │   ├── immutable
-│   │   │   │   ├── assets
-│   │   │   │   │   ├── 0.CR1R5xe_.css
-│   │   │   │   │   └── _layout.CR1R5xe_.css
-│   │   │   │   ├── chunks
-│   │   │   │   │   ├── -F4HFozQ.js
-│   │   │   │   │   ├── C75fvuOP.js
-│   │   │   │   │   ├── DBYW9kc1.js
-│   │   │   │   │   ├── DRVc36eT.js
-│   │   │   │   │   ├── DmYPTLUW.js
-│   │   │   │   │   └── DsnmJJEf.js
-│   │   │   │   ├── entry
-│   │   │   │   │   ├── app.DqlYXxXa.js
-│   │   │   │   │   └── start.CnQvvbLW.js
-│   │   │   │   └── nodes
-│   │   │   │       ├── 0.CvQyvi0E.js
-│   │   │   │       ├── 1.C1n9nX5B.js
-│   │   │   │       └── 2.DQfONYMh.js
-│   │   │   └── version.json
-│   │   ├── _headers
-│   │   ├── _redirects
-│   │   └── favicon.svg
-│   ├── non-ambient.d.ts
-│   ├── output
-│   │   ├── client
-│   │   │   ├── .vite
-│   │   │   │   └── manifest.json
-│   │   │   ├── _app
-│   │   │   │   ├── immutable
-│   │   │   │   │   ├── assets
-│   │   │   │   │   │   ├── 0.CR1R5xe_.css
-│   │   │   │   │   │   └── _layout.CR1R5xe_.css
-│   │   │   │   │   ├── chunks
-│   │   │   │   │   │   ├── -F4HFozQ.js
-│   │   │   │   │   │   ├── C75fvuOP.js
-│   │   │   │   │   │   ├── DBYW9kc1.js
-│   │   │   │   │   │   ├── DRVc36eT.js
-│   │   │   │   │   │   ├── DmYPTLUW.js
-│   │   │   │   │   │   └── DsnmJJEf.js
-│   │   │   │   │   ├── entry
-│   │   │   │   │   │   ├── app.DqlYXxXa.js
-│   │   │   │   │   │   └── start.CnQvvbLW.js
-│   │   │   │   │   └── nodes
-│   │   │   │   │       ├── 0.CvQyvi0E.js
-│   │   │   │   │       ├── 1.C1n9nX5B.js
-│   │   │   │   │       └── 2.DQfONYMh.js
-│   │   │   │   └── version.json
-│   │   │   └── favicon.svg
-│   │   └── server
-│   │       ├── .vite
-│   │       │   └── manifest.json
-│   │       ├── _app
-│   │       │   └── immutable
-│   │       │       └── assets
-│   │       │           └── _layout.CR1R5xe_.css
-│   │       ├── chunks
-│   │       │   ├── exports.js
-│   │       │   ├── index.js
-│   │       │   └── internal.js
-│   │       ├── entries
-│   │       │   ├── fallbacks
-│   │       │   │   └── error.svelte.js
-│   │       │   └── pages
-│   │       │       ├── _layout.svelte.js
-│   │       │       └── _page.svelte.js
-│   │       ├── index.js
-│   │       ├── internal.js
-│   │       ├── manifest-full.js
-│   │       ├── manifest.js
-│   │       └── nodes
-│   │           ├── 0.js
-│   │           ├── 1.js
-│   │           └── 2.js
-│   ├── tsconfig.json
-│   └── types
-│       ├── index.d.ts
-│       ├── route_meta_data.json
-│       └── src
-│           └── routes
-│               └── $types.d.ts
 ├── backend
 │   ├── Dockerfile
 │   ├── droidify
@@ -195,10 +60,8 @@ react-dom: ^19.1.1
 │   │       └── 003_make_model_primary_key.sql
 │   └── sqlc.yaml
 ├── bun.lock
-├── drizzle.config.ts
 ├── eslint.config.js
 ├── index.html
-├── netlify.toml
 ├── package.json
 ├── public
 │   └── favicon.svg
@@ -226,28 +89,9 @@ react-dom: ^19.1.1
 │   │   ├── PopularDevices.css
 │   │   └── PopularDevices.jsx
 │   ├── index.css
-│   ├── lib
-│   │   ├── components
-│   │   │   ├── CTA.svelte
-│   │   │   ├── Features.svelte
-│   │   │   ├── Footer.svelte
-│   │   │   ├── Header.svelte
-│   │   │   ├── Hero.svelte
-│   │   │   ├── HowItWorks.svelte
-│   │   │   └── PopularDevices.svelte
-│   │   ├── index.ts
-│   │   └── server
-│   │       └── db
-│   │           ├── index.ts
-│   │           └── schema.ts
-│   ├── main.jsx
-│   └── routes
-│       ├── +layout.svelte
-│       └── +page.svelte
+│   └── main.jsx
 ├── static
 │   └── favicon.ico
-├── svelte.config.js
-├── tsconfig.json
 ├── vite.config.js
 └── vite.config.ts
 ```
@@ -265,7 +109,7 @@ react-dom: ^19.1.1
 Contributions are welcome! Here's how you can help:
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/kanjelkheir/droidify.git`
+2. **Clone** your fork: `git clone https://github.com/eliekh05/Droidify/.git`
 3. **Create** a new branch: `git checkout -b feature/your-feature`
 4. **Commit** your changes: `git commit -am 'Add some feature'`
 5. **Push** to your branch: `git push origin feature/your-feature`
